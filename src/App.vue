@@ -1,33 +1,32 @@
 <script setup>
-import { reactive, ref }  from 'vue';
+import { ref ,provide }  from 'vue';
 import Header from './components/header.vue';
 
 
 
 //响应式数据
-const web = reactive({
+const web ={
   name:'hujaiyingnizyuilihai',
   url:'www.hujiying.com'
   
-})
+}
+provide('provideWeb',web)
 
 const user = ref(0)
+provide('provideUser',user)
 
-const emitsGetWeb = (data) =>{
-  console.log(data)
-  web.url = data.url
+const userAdd = () => {
+  user.value ++
 }
-
-const emitsUserAdd = (data) => {
-  console.log(data)
-  user.value += data
-}
+provide('provideFuncUserAdd', userAdd)
 </script>
 
 <template>
-  <Header @getWeb="emitsGetWeb" @userAdd="emitsUserAdd"/>
+  <h3>App.vue-Top组件</h3>
+    user:{{  user }}
+  <Header/>
 
-  {{ web.url }} -{{ user }}
+  
 
 </template>
 
