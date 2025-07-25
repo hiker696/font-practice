@@ -1,32 +1,22 @@
 <script setup>
-import { ref ,provide }  from 'vue';
-import Header from './components/header.vue';
+import Header from './components/header.vue'
+import Footer from './components/footer.vue'
 
-
-
-//响应式数据
-const web ={
-  name:'hujaiyingnizyuilihai',
-  url:'www.hujiying.com'
-  
-}
-provide('provideWeb',web)
-
-const user = ref(0)
-provide('provideUser',user)
-
-const userAdd = () => {
-  user.value ++
-}
-provide('provideFuncUserAdd', userAdd)
 </script>
 
 <template>
-  <h3>App.vue-Top组件</h3>
-    user:{{  user }}
-  <Header/>
+  <h3>App.vue</h3>
 
-  
+  <Header>
+    <a href="dengruicode.com">胡家瑛你是最棒的</a>
+  </Header>
+
+  <Footer>
+    <!-- <template v-slot:url> -->
+    <template #url>
+    <a href="dengruicode.com">网址</a>
+    </template>
+  </Footer>
 
 </template>
 
